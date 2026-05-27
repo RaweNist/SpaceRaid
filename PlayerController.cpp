@@ -1,5 +1,4 @@
 #include "PlayerController.h"
-#include "SFMLConnect.h"
 #include "Player.h"
 #include "Projectile.h"
 
@@ -13,7 +12,6 @@ PlayerController* PlayerController::getPlayerController() {
     if (!controller) {
         controller = new PlayerController();
     }
-
     return controller;
 }
 
@@ -26,7 +24,7 @@ void PlayerController::controllPlayer(sf::RenderWindow& window, Player* player, 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
         player->setState(State::RUN);
         player->setDirectionX(DirectionX::LEFT);
-        if (SFMLConnect::checkKeyPressedS()) {
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))) {
             updated_pos.x -= sqrt(0.5) * player->getSpeed() * time;
             updated_pos.y += sqrt(0.5) * player->getSpeed() * time;
             player->setDirectionY(DirectionY::DOWN);
